@@ -21,7 +21,7 @@ jobs:
      - name: Build and upload
        run: |
         git clone https://github.com/Valium007/musl-cross-make --depth 1 && cd musl-cross-make
-        make -j4
+        make -j4 && make install
         mv output arm-linux-musleabihf-gcc-13
         tar --xz -cf arm-linux-musleabihf-gcc-13.tar arm-linux-musleabihf-gcc-13/
         gh release create v$GCC_VER arm-linux-musleabihf-gcc-13.tar -R valium007/musl-cross-make -t "GCC-$GCC_VER" -n "GCC-$GCC_VER cross compiler for arm musl"
